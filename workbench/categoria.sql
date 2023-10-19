@@ -1,0 +1,10 @@
+insert into categoria (cat_id, nombre) values (1, 'Software de Edición');
+insert into categoria (cat_id, nombre) values (2, 'Software de Oficina');
+insert into categoria (cat_id, nombre) values (3, 'Software de Desarrollo');
+insert into categoria (cat_id, nombre) values (4, 'Software de Diseño y Multimedia');
+insert into categoria (cat_id, nombre) values (5, 'Software de Productividad');
+insert into categoria (cat_id, nombre) values (6, 'Software de Seguridad');
+insert into categoria (cat_id, nombre) values (7, 'Software de Sistemas Operativos');
+insert into categoria (cat_id, nombre) values (8, 'Software de Navegación y Comunicación');
+insert into categoria (cat_id, nombre) values (9, 'Software de Entretenimiento');
+insert into categoria (cat_id, nombre) values (10, 'Software de Educación');
