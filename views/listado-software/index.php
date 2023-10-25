@@ -81,7 +81,7 @@ $this->title = 'Soft Library';
                         <div class="software_content rounded-md">
                             <div class="software_overview relative cursor-pointer">
                                 <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                                    <?= $item['licencia']; ?>
+                                    <?= $item['nombre_licencia']; ?>
                                 </span>
 
                                 <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
@@ -90,13 +90,13 @@ $this->title = 'Soft Library';
                             </div>
                             <div class="software_about my-2 cursor-pointer">
                                 <span class="text-sm text-amber-700">
-                                    <?= $item['categoria']; ?>
+                                    <?= $item['categoria_nombre']; ?>
                                 </span>
                                 <h2 class="text-xl font-bold -mb-1 -mt-1 text-slate-700">
                                     <?= $item['nombre']; ?>
                                 </h2>
                                 <span class="text-xs text-gray-400">
-                                    <?= $item['desarrollador']; ?>
+                                    <?= $item['desarrollador_nombre']; ?>
                                 </span>
                                 <span class="font-semibold text-lg text-slate-600 block -mt-1">$
                                     <?= $item['precio']; ?>

@@ -1,9 +1,6 @@
 <?php
-//https://www.resourcifi.com/blog/wp-content/uploads/2022/12/How-Much-Does-it-Cost-to-Develop-Custom-Software_-2.jpg
-//https://www.atrack.com.tw/public/atrack//images/product/top-banner_software.jpg
-//https://static.vecteezy.com/system/resources/previews/006/362/890/non_2x/programming-and-software-development-web-page-banner-program-code-on-screen-device-software-development-coding-process-concept-vector.jpg
-/** @var yii\web\View $this */
-$this->title = 'Soft Library';
+    /** @var yii\web\View $this */
+    $this->title = 'Soft Library';
 ?>
 <div class="site-index">
 
@@ -52,11 +49,11 @@ $this->title = 'Soft Library';
                 <div class="software_content rounded-md">
                     <div class="software_overview relative cursor-pointer">
                         <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                            <?= isset($dato["licencia"]) ? $dato["licencia"] : 'Sin información' ?>
+                            <?= isset($dato["nombre_licencia"]) ? $dato["nombre_licencia"] : 'Sin información' ?>
                         </span>
 
                         <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
-                            <img src="<?= $dato['fotografia'] //Yii::getAlias('@web/imgs/office_365_caratula.webp') ?>" alt="office_365_lincencia">
+                            <img src="<?= $dato['fotografia'] ?>" alt="office_365_lincencia">
                         </div>
                     </div>
                 </div>
@@ -100,10 +97,10 @@ $this->title = 'Soft Library';
                 <div class="software_content rounded-md">
                     <div class="software_overview relative cursor-pointer">
                         <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                            <?= isset($dato["licencia"]) ? $dato["licencia"] : 'Sin información' ?>
+                            <?= isset($dato["nombre_licencia"]) ? $dato["nombre_licencia"] : 'Sin información' ?>
                         </span>
                         <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
-                            <img src="<?= $dato['fotografia'] //Yii::getAlias('@web/imgs/office_365_caratula.webp') ?>" alt="office_365_lincencia">
+                            <img src="<?= $dato['fotografia']?>" alt="office_365_lincencia">
                         </div>
                     </div>
                 </div>

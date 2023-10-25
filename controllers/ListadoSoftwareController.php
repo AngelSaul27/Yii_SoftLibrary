@@ -28,7 +28,7 @@ class ListadoSoftwareController extends Controller
             }
 
             if (!empty($searchModel->categoria)) {
-                $query->andWhere(['IN', 'categoria', $searchModel->categoria]);
+                $query->andWhere(['IN', 'categoria_nombre', $searchModel->categoria]);
             }
         }
 
@@ -38,7 +38,7 @@ class ListadoSoftwareController extends Controller
             }
 
             if (!empty($searchModel->tipo)) {
-                $query->andWhere(['IN', 'licencia', $searchModel->tipo]);
+                $query->andWhere(['IN', 'nombre_licencia', $searchModel->tipo]);
             }
         }
 

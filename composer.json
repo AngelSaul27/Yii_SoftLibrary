@@ -37,6 +37,7 @@
         "allow-plugins": {
             "yiisoft/yii2-composer" : true
         },
+        "platform-check": false,
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false

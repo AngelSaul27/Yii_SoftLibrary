@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\controllers\vistas\vw_detalle_software;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -21,6 +22,7 @@ class SiteController extends Controller
             ],
         ];
     }
+
     /**
      * Displays homepage.
      *
@@ -28,8 +30,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $Edicion = Yii::$app->db->createCommand('SELECT * FROM vw_detalle_software WHERE categoria = "Software de Edición" LIMIT 6')->queryAll();
-        $Oficina = Yii::$app->db->createCommand('SELECT * FROM vw_detalle_software WHERE categoria = "Software de Oficina" Limit 6')->queryAll();
+        $query = vw_detalle_software::find();
+        $Edicion =  $query->where(['categoria_nombre' => 'Software de Edición'])->limit(6)->all();
+        $Oficina =  $query->where(['categoria_nombre' => 'Software de Oficina'])->limit(6)->all();
+
+
         return $this->render('index',['edicion' => $Edicion, 'oficina' => $Oficina]);
     }
 }

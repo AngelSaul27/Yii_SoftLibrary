@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=byoswzcffkvxqlqqpikd-mysql.services.clever-cloud.com;dbname=byoswzcffkvxqlqqpikd',
-    'username' => 'u66iiyrajwyylxdx',
-    'password' => 'K7CqUwF3r66h2nUVEKBT',
+    'dsn' => 'mysql:host=localhost;dbname=soft_library',
+    'username' => 'root',
+    'password' => '',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
