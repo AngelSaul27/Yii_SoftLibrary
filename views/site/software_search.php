@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 
 $this->title = 'Soft Library';
 ?>
-<div class="site-index">
+<div class="my-4 mx-12">
     <div class="grid grid-cols-5 gap-5">
         <div class="col-span-1">
             <h1 class="text-2xl font-bold uppercase">Filtros</h1>

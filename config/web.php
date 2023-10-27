@@ -46,7 +46,15 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'listado' => 'listado-software/index',
+                'usuario' => 'usuario/index',
+                'administrador' => 'admin/index',
+                'administrador/form/software' => 'admin/form-software',
+
+                'listado' => 'software/index', //Global Acess
+
+                'login' => 'site/login', //Global Acess with isGuest
+                'register' => 'site/register', //Global Acess with isGuest
+                'logout' => 'site/logout' //Global Acess with not isGuest
             ],
         ],
     ],

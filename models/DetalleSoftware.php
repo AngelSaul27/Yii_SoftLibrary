@@ -2,12 +2,12 @@
 namespace app\models;
 use yii\db\ActiveRecord;
 
-class vw_detalle_software extends ActiveRecord
+class DetalleSoftware extends ActiveRecord
 {
 
     public static function tableName()
     {
-        return parent::tableName();
+        return 'vw_detalle_software';
     }
 
 

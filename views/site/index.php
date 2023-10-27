@@ -2,7 +2,7 @@
     /** @var yii\web\View $this */
     $this->title = 'Soft Library';
 ?>
-<div class="site-index">
+<div class="site-index my-4 mx-12">
 
     <!-- SPLASH -->
     <div class="w-full overflow-hidden rounded-md h-80 relative" style="background-image: url('https://www.resourcifi.com/blog/wp-content/uploads/2022/12/How-Much-Does-it-Cost-to-Develop-Custom-Software_-2.jpg');
