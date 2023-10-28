@@ -5,7 +5,9 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
+use webvimark\modules\UserManagement\models\rbacDB\Role;
 use yii\bootstrap5\Html;
+use webvimark\modules\UserManagement\UserManagementModule;
 
 AppAsset::register($this);
 
@@ -58,7 +60,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 <div class="flex gap-3 items-center">
                     <div class="flex flex-col">
                         <span class="text-[13px] font-bold text-uppercase">Bienvenido</span>
-                        <span class="text-[11px] font-semibold text-uppercase"><?= Yii::$app->user->identity->getRole()?></span>
+                        <span class="text-[11px] font-semibold text-uppercase"><?= key(Role::getUserRoles(Yii::$app->user->id))?></span>
                     </div>
 
                     <button data-dropdown-toggle="menu_toggle" data-dropdown-placement="bottom-end"  class="p-2 rounded-md shadow-sm bg-slate-900 text-white">
@@ -68,15 +70,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     </button>
 
                     <div id="menu_toggle" class="z-10 hidden bg-slate-900 rounded-lg shadow w-max divide-y divide-slate-800 top-20">
-                        <?php $roleName = Yii::$app->user->identity->getRole(); ?>
-                        <?php if(($roleName) === \app\models\RegisterForm::ADMIN_ROLE) : ?>
+                        <?php if(key(Role::getUserRoles(Yii::$app->user->id)) === 'Admin') : ?>
                             <ul class="py-2 text-sm text-gray-700">
                                 <li>
                                     <a href="<?= Yii::getAlias('/administrador')?>" class="block px-4 py-2 hover:bg-slate-800 text-white">Dashboard</a>
                                 </li>
                                 <li>
                                     <button class="block px-4 py-2 hover:bg-slate-800 text-white w-full text-start" data-dropdown-toggle="forms_down" data-dropdown-placement="left-start">
-                                        <span>Formularios</span>
+                                        <span>Biblioteca</span>
                                     </button>
                                     <div id="forms_down" class="z-10 hidden bg-slate-900 divide-y divide-gray-100 rounded-lg shadow w-max">
                                         <ul class="py-2 text-sm text-gray-700">
@@ -97,36 +98,20 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                                 </li>
                                 <li>
                                     <button class="block px-4 py-2 hover:bg-slate-800 text-white w-full text-start" data-dropdown-toggle="tables_down" data-dropdown-placement="left-start">
-                                        <span>Tablas</span>
+                                        <span>Seguridad</span>
                                     </button>
                                     <div id="tables_down" class="z-10 hidden bg-slate-900 divide-y divide-gray-100 rounded-lg shadow w-max">
                                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="double">
-                                            <li>
-                                                <a href="#" class="block px-4 py-2 hover:bg-slate-800 text-white">Software</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="block px-4 py-2 hover:bg-slate-800 text-white">Desarrolladores</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="block px-4 py-2 hover:bg-slate-800 text-white">Puntuaje</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="block px-4 py-2 hover:bg-slate-800 text-white">Licencia</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="block px-4 py-2 hover:bg-slate-800 text-white">Categoria</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="block px-4 py-2 hover:bg-slate-800 text-white">Anuncios</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="block px-4 py-2 hover:bg-slate-800 text-white">Usuarios</a>
-                                            </li>
+                                            <?php
+                                            foreach((UserManagementModule::menuItems() )as $items){
+                                                echo '<li><a class="block px-4 py-2 hover:bg-slate-800 text-white" href="'.($items['url'][0]) .'">'.($items['label']).'</a></li>';
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </li>
                             </ul>
-                        <?php elseif ($roleName === \app\models\RegisterForm::DEFAULT_ROLE) : ?>
+                        <?php elseif (isset($role)) : ?>
                             <ul class="py-2 text-sm text-gray-700">
                                 <li>
                                     <a href="<?= Yii::getAlias('/usuario')?>" class="block px-4 py-2 hover:bg-slate-800 text-white">Dashboard</a>

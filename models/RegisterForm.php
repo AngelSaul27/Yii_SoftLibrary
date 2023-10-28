@@ -2,12 +2,12 @@
 
 namespace app\models;
 
+use webvimark\modules\UserManagement\models\User;
 use yii\base\Model;
 
 class RegisterForm extends Model
 {
     CONST DEFAULT_ROLE = 'usuario';
-    CONST ADMIN_ROLE = 'administrador';
 
     public $name, $password, $email;
 
@@ -23,11 +23,9 @@ class RegisterForm extends Model
     {
         if($this->validate()){
             $model = new User();
-            $model->name = $this->name;
+            $model->username = $this->name;
             $model->email = $this->email;
             $model->password = password_hash($this->password, PASSWORD_DEFAULT);
-            $model->timestamp = date('Y-m-d H:i:s');
-            $model->role = self::DEFAULT_ROLE;
 
             if($model->save()){
                 return true;

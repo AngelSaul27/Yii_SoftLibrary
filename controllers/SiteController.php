@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\models\DetalleSoftware;
-use app\models\LoginForm;
+use webvimark\modules\UserManagement\models\forms\LoginForm;
 use app\models\RegisterForm;
 use app\models\User;
 use PhpParser\Node\Scalar\String_;
+use webvimark\modules\UserManagement\models\rbacDB\Role;
+use webvimark\modules\UserManagement\models\User as UserModel;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -55,12 +57,10 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $user = Yii::$app->user->identity;
-            $role = $user->getRole();
-
-            if($role === RegisterForm::DEFAULT_ROLE){
+            $role = key(Role::getUserRoles(Yii::$app->user->id));
+            if($role === 'Usuario'){
                 return $this->redirect(['./usuario']);
-            }else if($role === RegisterForm::ADMIN_ROLE){
+            }else if($role === 'Admin'){
                 return $this->redirect(['./administrador']);
             }
 
@@ -76,23 +76,25 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionRegister(): string
+    public function actionRegister()
     {
         if (!Yii::$app->user->isGuest){
             return $this->goHome();
         }
 
-        $model = new RegisterForm();
-        $model->scenario = 'USUARIO';
+        $model = new UserModel(['scenario'=>'newUser']);
 
         if ($model->load(Yii::$app->request->post())) {
-            $result = $model->execute();
+            $result = $model->save();
+
             Yii::$app->session->setFlash(
                 $result? 'success' : 'error',
                 $result? 'Registro exitoso ya puedes ingresar' : 'No puedimos realizar el registro'
             );
 
             if($result){
+                $role = UserModel::assignRole($model->id, UserModel::USER_DEFAULT);
+
                 return $this->redirect('/');
             }
         }

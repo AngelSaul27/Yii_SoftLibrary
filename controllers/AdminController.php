@@ -10,18 +10,13 @@ use yii\web\Controller;
 
 class AdminController extends Controller
 {
-    /**
-     * @throws BadRequestHttpException
-     */
-    public function beforeAction($action)
+    public function behaviors(): array
     {
-        if(!Yii::$app->user->isGuest){
-            if((Yii::$app->user->identity->getRole()) === RegisterForm::ADMIN_ROLE){
-                return parent::beforeAction($action);
-            }
-        }
-
-        return $this->goHome();
+        return [
+            'ghost-access'=> [
+                'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+            ],
+        ];
     }
 
     public function actionIndex(): string

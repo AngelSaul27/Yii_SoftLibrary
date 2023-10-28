@@ -11,7 +11,7 @@ $this->title = 'Registro';
     ]) ?>
     <h1 class="text-2xl font-bold text-neutral-700 text-center mb-2">Registro de Usuario</h1>
     <?php
-        echo $form->field($model, 'name')->textInput()->label('Name');
+        echo $form->field($model, 'username')->textInput()->label('Name');
         echo $form->field($model, 'email')->textInput()->label('Email');
         echo $form->field($model, 'password')->passwordInput();
 

@@ -38,6 +38,17 @@ class ComposerStaticInit772e2e451822aead045fa7a783d56c3e
             'yii\\bootstrap5\\' => 15,
             'yii\\' => 4,
         ),
+        'w' => 
+        array (
+            'webvimark\\modules\\UserManagement\\' => 33,
+            'webvimark\\image\\' => 16,
+            'webvimark\\helpers\\' => 18,
+            'webvimark\\extensions\\GridPageSize\\' => 34,
+            'webvimark\\extensions\\GridBulkActions\\' => 37,
+            'webvimark\\extensions\\DateRangePicker\\' => 37,
+            'webvimark\\extensions\\BootstrapSwitch\\' => 37,
+            'webvimark\\components\\' => 21,
+        ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
@@ -141,6 +152,38 @@ class ComposerStaticInit772e2e451822aead045fa7a783d56c3e
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'webvimark\\modules\\UserManagement\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/module-user-management',
+        ),
+        'webvimark\\image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/image',
+        ),
+        'webvimark\\helpers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/helpers',
+        ),
+        'webvimark\\extensions\\GridPageSize\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/grid-page-size',
+        ),
+        'webvimark\\extensions\\GridBulkActions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/grid-bulk-actions',
+        ),
+        'webvimark\\extensions\\DateRangePicker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/date-range-picker',
+        ),
+        'webvimark\\extensions\\BootstrapSwitch\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/bootstrap-switch',
+        ),
+        'webvimark\\components\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webvimark/components',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -320,6 +363,13 @@ class ComposerStaticInit772e2e451822aead045fa7a783d56c3e
     );
 
     public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Ikimea\\Browser\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/ikimea/browser/lib',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 

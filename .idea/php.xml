@@ -108,9 +108,24 @@
       <path value="$PROJECT_DIR$/vendor/behat/gherkin" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/react/promise-timer" />
+      <path value="$PROJECT_DIR$/vendor/react/http" />
+      <path value="$PROJECT_DIR$/vendor/react/async" />
+      <path value="$PROJECT_DIR$/vendor/ringcentral/psr7" />
+      <path value="$PROJECT_DIR$/vendor/fig/http-message-util" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/ikimea/browser" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/module-user-management" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/components" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/grid-bulk-actions" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/bootstrap-switch" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/image" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/helpers" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/date-range-picker" />
+      <path value="$PROJECT_DIR$/vendor/webvimark/grid-page-size" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
