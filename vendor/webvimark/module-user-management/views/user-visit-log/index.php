@@ -2,6 +2,7 @@
 
 use webvimark\extensions\DateRangePicker\DateRangePicker;
 use webvimark\modules\UserManagement\UserManagementModule;
+use yii\bootstrap5\BootstrapAsset;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use webvimark\extensions\GridPageSize\GridPageSize;
@@ -15,6 +16,8 @@ use yii\grid\GridView;
 
 $this->title = UserManagementModule::t('back', 'Visit log');
 $this->params['breadcrumbs'][] = $this->title;
+
+BootstrapAsset::register($this);
 ?>
 <div class="user-visit-log-index">
 

@@ -1,5 +1,54 @@
 # Changelog
 
+## 1.4.0 (2023-07-11)
+
+A major new feature release, see [**release announcement**](https://clue.engineering/2023/announcing-reactphp-promise-v3).
+
+*   Feature: Add support for new Promise v3 release.
+    (#464 and #524 by @clue)
+
+*   Feature: Support PHP 8.2 release.
+    (#491 by @Nielsvanpach)
+
+*   Improve test suite, update dependencies and report failed assertions.
+    (#462 and #501 by @clue and #466 and #492 by @SimonFrings)
+
+## 1.3.0 (2022-07-11)
+
+A major new feature release, see [**release announcement**](https://clue.engineering/2022/announcing-reactphp-async).
+
+*   Feature: Add new Async component to core components.
+    (#458 by @clue)
+
+*   Feature: Support PHP 8.1 release.
+    (#451 by @clue)
+
+*   Improve documentation, update HTTP server example for reactphp/http v1.6.0 release.
+    (#449 and #459 by @clue and #457 by @nhedger)
+
+*   Improve test suite, support PHPUnit 9 and update dependencies to avoid skipping tests.
+    (#450 and #454 by @clue and #455 by @SimonFrings)
+
+## 1.2.0 (2021-07-11)
+
+A major new feature release, see [**release announcement**](https://clue.engineering/2021/announcing-reactphp-default-loop).
+
+*   Feature: Simplify usage by supporting new [default loop](https://reactphp.org/event-loop/#loop).
+    (#445 by @clue)
+
+## 1.1.0 (2020-07-11)
+
+A major new feature release, see [**release announcement**](https://clue.engineering/2020/announcing-reactphp-http).
+
+*   Feature: Add event-driven, streaming HTTP client and server implementation via [`react/http`](https://reactphp.org/http/).
+    (#440 by @clue)
+
+*   Update documentation to link to project meta repo and link to our official Gitter chat room.
+    (#432 and #433 by @clue)
+
+*   Improve test suite to run tests on PHP 7.4 and add `.gitattributes` to exclude dev files from exports.
+    (#434 by @reedy and #439 by @clue)
+
 ## 1.0.0 (2019-07-11)
 
 *   First stable LTS release, now following [SemVer](https://semver.org/).

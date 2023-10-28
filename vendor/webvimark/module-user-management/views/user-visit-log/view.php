@@ -1,9 +1,10 @@
 <?php
 
 use webvimark\modules\UserManagement\UserManagementModule;
+use yii\bootstrap5\BootstrapAsset;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+BootstrapAsset::register($this);
 /**
  * @var yii\web\View $this
  * @var webvimark\modules\UserManagement\models\UserVisitLog $model

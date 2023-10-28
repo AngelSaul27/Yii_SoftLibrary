@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\DetalleSoftware;
+use app\models\ViewDetalleSoftware;
 use webvimark\modules\UserManagement\models\forms\LoginForm;
 use app\models\RegisterForm;
 use app\models\User;
@@ -36,7 +36,7 @@ class SiteController extends Controller
      */
     public function actionIndex(): string
     {
-        $query = DetalleSoftware::find();
+        $query = ViewDetalleSoftware::find();
         $Edicion =  $query->where(['categoria_nombre' => 'Software de Edición'])->limit(6)->all();
         $Oficina =  $query->where(['categoria_nombre' => 'Software de Oficina'])->limit(6)->all();
 

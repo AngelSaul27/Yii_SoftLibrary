@@ -77,7 +77,10 @@ $config = [
                     $event->action->controller->layout = 'loginLayout.php';
                 };
             },
-        ]
+        ],
+        'bootstrap' => [
+            'class' => 'yii\bootstrap\BootstrapAsset',
+        ],
     ]
 ];
 

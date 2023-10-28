@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\DetalleSoftware;
+use app\models\ViewDetalleSoftware;
 use app\models\SoftwareSearch;
 use Yii;
 use yii\data\Pagination;
@@ -21,7 +21,7 @@ class SoftwareController extends Controller
         $searchModel = new SoftwareSearch();
         $searchModel->load(Yii::$app->request->get());
 
-        $query = DetalleSoftware::find();
+        $query = ViewDetalleSoftware::find();
         $searchModel->aplicarFiltro($query);
         $count = $query->count();
 

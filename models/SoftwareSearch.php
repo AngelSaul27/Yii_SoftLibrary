@@ -36,7 +36,7 @@ class SoftwareSearch extends Model
             }
 
             if (!empty($this->tipo)) {
-                $query->andWhere(['IN', 'nombre_licencia', $this->tipo]);
+                $query->andWhere(['IN', 'licencia', $this->tipo]);
             }
         }
 

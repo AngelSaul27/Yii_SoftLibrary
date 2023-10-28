@@ -5,40 +5,36 @@
 <div class="site-index my-4 mx-12">
 
     <!-- SPLASH -->
-    <div class="w-full overflow-hidden rounded-md h-80 relative" style="background-image: url('https://www.resourcifi.com/blog/wp-content/uploads/2022/12/How-Much-Does-it-Cost-to-Develop-Custom-Software_-2.jpg');
-        background-size: cover;
-        background-position: center;">
-        <div class="grid grid-cols-3 h-full items-center justify-center">
-            <div class="px-2 text-center h-max">
-                <h1 class="text-white text-2xl font-bold">Encuentra una gran variedad de Software</h1>
-                <h1 class="text-white text-md font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum aperiam explicabo dolorem necessitatibus quis tempore commodi in! Similique fugiat ducimus voluptatem, enim quod, asperiores alias, esse eum dolorum id tempora?</h1>
+    <div id="animation-carousel" class="relative w-full" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+            <!-- Item 1 -->
+            <div class="active duration-200 ease-linear" data-carousel-item>
+                <img src="<?= Yii::getAlias('@web/imgs/banner_autodesk.webp')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <div class="active duration-200 ease-linear" data-carousel-item>
+                <img src="<?= Yii::getAlias('@web/imgs/app_scaled.jpg')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -translate-3" alt="...">
             </div>
         </div>
-
-        <div class="rounded-md absolute top-8 right-8 w-44">
-            <div class="software_overview relative cursor-pointer">
-                <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                    Licenciado
-                </span>
-
-                <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
-                    <img src="<?= Yii::getAlias('@web/imgs/office_365_caratula.webp') ?>" alt="office_365_lincencia">
-                </div>
-            </div>
-        </div>
-
-        <div class="rounded-md absolute top-8 right-56 w-44">
-            <div class="software_overview relative cursor-pointer">
-                <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                    Licenciado
-                </span>
-
-                <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
-                    <img src="<?= Yii::getAlias('@web/imgs/office_365_caratula_2.jpg') ?>" alt="office_365_lincencia">
-                </div>
-            </div>
-        </div>
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
     </div>
+
 
     <!--- ENDED --->
     <h1 class="text-2xl font-bold mt-3 mb-4">Software de Oficina</h1>
@@ -46,10 +42,10 @@
     <div class="grid grid-cols-6 gap-4 mb-2">
         <?php if (isset($oficina)) : ?>
             <?php foreach ($oficina as $dato) : ?>
-                <div class="software_content rounded-md">
+                <div class="software_content rounded-md min-h-[265px]">
                     <div class="software_overview relative cursor-pointer">
                         <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                            <?= isset($dato["nombre_licencia"]) ? $dato["nombre_licencia"] : 'Sin información' ?>
+                            <?= isset($dato["licencia"]) ? $dato["licencia"] : 'Sin información' ?>
                         </span>
 
                         <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
@@ -94,13 +90,13 @@
     <div class="grid grid-cols-6 gap-4 mb-2">
         <?php if (isset($edicion)) : ?>
             <?php foreach ($edicion as $dato) : ?>
-                <div class="software_content rounded-md">
+                <div class="software_content rounded-md min-h-[265px]">
                     <div class="software_overview relative cursor-pointer">
                         <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                            <?= isset($dato["nombre_licencia"]) ? $dato["nombre_licencia"] : 'Sin información' ?>
+                            <?= isset($dato["licencia"]) ? $dato["licencia"] : 'Sin información' ?>
                         </span>
                         <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
-                            <img src="<?= $dato['fotografia']?>" alt="office_365_lincencia">
+                            <img src="<?= $dato['fotografia']?>" alt="office_365_lincencia" class="min-h-[265px] object-cover">
                         </div>
                     </div>
                 </div>

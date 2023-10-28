@@ -11,7 +11,7 @@
 <br>
 
 <div align="center">
-    <a href="https://travis-ci.org/reactphp/react"><img src="https://travis-ci.org/reactphp/react.svg?branch=master" alt="Build Status"></a>
+    <a href="https://github.com/reactphp/reactphp/actions"><img src="https://github.com/reactphp/reactphp/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
 </div>
 
 <br>
@@ -21,6 +21,28 @@ is an event loop, on top of which it provides low-level utilities, such as:
 Streams abstraction, async DNS resolver, network client/server, HTTP
 client/server and interaction with processes. Third-party libraries can use these
 components to create async network clients/servers and more.
+
+```php
+<?php
+
+// $ composer require react/http react/socket # install example using Composer
+// $ php example.php # run example on command line, requires no additional web server
+
+require __DIR__ . '/vendor/autoload.php';
+
+$server = new React\Http\HttpServer(function (Psr\Http\Message\ServerRequestInterface $request) {
+    return React\Http\Message\Response::plaintext(
+        "Hello World!\n"
+    );
+});
+
+$socket = new React\Socket\SocketServer('127.0.0.1:8080');
+$server->listen($socket);
+
+echo "Server running at http://127.0.0.1:8080" . PHP_EOL;
+```
+
+This simple web server written in ReactPHP responds with "Hello World!" for every request.
 
 ReactPHP is production ready and battle-tested with millions of installations
 from all kinds of projects around the world. Its event-driven architecture makes
@@ -68,6 +90,9 @@ Node.js (V8).
   Promises/A implementation for PHP.
   [Read the documentation](https://github.com/reactphp/promise)
 
+* **Async**
+  Async utilities and fibers for ReactPHP.
+  [Read the documentation](https://github.com/reactphp/async)
 
 ## Network Components
 
@@ -79,15 +104,9 @@ Node.js (V8).
   Event-driven UDP client and server sockets for ReactPHP.
   [Read the documentation](https://github.com/reactphp/datagram)
 
-## Protocol Components
-
 * **HTTP**
-  Event-driven, streaming plaintext HTTP and secure HTTPS server for ReactPHP.
+  Event-driven, streaming HTTP client and server implementation for ReactPHP.
   [Read the documentation](https://github.com/reactphp/http)
-
-* **HTTPClient**
-  Event-driven, streaming HTTP client for ReactPHP.
-  [Read the documentation](https://github.com/reactphp/http-client)
 
 * **DNS**
   Async DNS resolver for ReactPHP.
@@ -110,7 +129,6 @@ Node.js (V8).
 * **PromiseStream**
   The missing link between Promise-land and Stream-land, built on top of ReactPHP.
   [Read the documentation](https://github.com/reactphp/promise-stream)
-
 
 ## Built with ReactPHP
 
@@ -161,6 +179,10 @@ Node.js (V8).
 * **Marc J. Schmidt**
   Bring High Performance Into Your PHP App (with ReactPHP).
   [marcjschmidt.de](http://marcjschmidt.de/blog/2014/02/08/php-high-performance.html)
+  
+* **Marc Morera**
+  When ReactPHP meet Symfony
+  [medium.com/@apisearch](https://medium.com/@apisearch/symfony-and-reactphp-series-82082167f6fb)
 
 ## Talks
 
@@ -180,14 +202,14 @@ This means that instead of installing something like a "ReactPHP framework", you
 pick only the components that you need.
 
 This project follows [SemVer](https://semver.org/) for all its stable components.
-The recommended way to install these components is [through Composer](https://getcomposer.org).
-[New to Composer?](http://getcomposer.org/doc/00-intro.md)
+The recommended way to install these components is [through Composer](https://getcomposer.org/).
+[New to Composer?](https://getcomposer.org/doc/00-intro.md)
 
 For example, this may look something like this:
 
 ```bash
 # recommended install: pick required components
-$ composer require react/event-loop react/http
+composer require react/event-loop react/http
 ```
 
 As an alternative, we also provide a meta package that will install all stable
@@ -197,10 +219,10 @@ installed like this:
 
 ```bash
 # quick protoyping only: install all stable components
-$ composer require react/react:^1.0
+composer require react/react:^1.4
 ```
 
-For more details, check out [ReactPHP's homepage](https://reactphp.org) for
+For more details, check out [ReactPHP's homepage](https://reactphp.org/) for
 quickstart examples and usage details.
 
 See also the combined [changelog for all ReactPHP components](https://reactphp.org/changelog.html)
@@ -217,12 +239,11 @@ fair chance that it may be relevant to more people. Please do not hesitate to
 file your question as an issue in the relevant component so others can also
 participate.
 
-Check out `#reactphp` on `irc.freenode.net`. You can use the
-[Webchat](http://webchat.freenode.net/?channels=%23reactphp) if you don't
-already use an IRC client. Many of us are available in this channel, so many
-questions get answered in a few minutes to some hours. We also use this channel
+You can also check out our official [Gitter chat room](https://gitter.im/reactphp/reactphp).
+Most of the people involved in this project are available in this chat room, so many
+questions get answered in a few minutes to some hours. We also use this chat room
 to announce all new releases and ongoing development efforts, so consider
-setting up an IRC client and idling in this channel for a little longer.
+staying in this chat room for a little longer.
 
 Also follow [@reactphp](https://twitter.com/reactphp) on Twitter for updates.
 We use this mostly for noteworthy, bigger updates and to keep the community
@@ -248,25 +269,25 @@ Thank you!
 ## Tests
 
 To run the test suite, you first need to clone this repo and then install all
-dependencies [through Composer](https://getcomposer.org):
+dependencies [through Composer](https://getcomposer.org/):
 
 ```bash
-$ composer install
+composer install
 ```
 
 To run the test suite, go to the project root and run:
 
 ```bash
-$ php vendor/bin/phpunit
+vendor/bin/phpunit
 ```
 
 The test suite also contains a number of functional integration tests that rely
 on a stable internet connection. Due to the vast number of integration tests,
-these are skipped by default on Travis CI. If you also do not want to run these,
+these are skipped by default during CI runs. If you also do not want to run these,
 they can simply be skipped like this:
 
 ```bash
-$ php vendor/bin/phpunit --exclude-group internet
+vendor/bin/phpunit --exclude-group internet
 ```
 
 ## License

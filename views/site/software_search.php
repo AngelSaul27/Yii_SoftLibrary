@@ -30,7 +30,7 @@ $this->title = 'Soft Library';
                 <h1 class="font-bold text-sm uppercase text-slate-700 my-2">Tipo</h1>
 
                 <?= $form->field($searchModel, 'tipo[0]')->checkbox(['template' => "{input} {label}", 'label' => Html::tag('span', 'Gratuito', ['class' => 'text-slate-500']), 'value' => 'Gratuito', 'class' => 'outline-none'])->label(false) ?>
-                <?= $form->field($searchModel, 'tipo[1]')->checkbox(['template' => "{input} {label}", 'label' => Html::tag('span', 'Con Lincencia', ['class' => 'text-slate-500']), 'value' => 'Con Lincencia', 'class' => 'outline-none'])->label(false) ?>
+                <?= $form->field($searchModel, 'tipo[1]')->checkbox(['template' => "{input} {label}", 'label' => Html::tag('span', 'Con lincencia', ['class' => 'text-slate-500']), 'value' => 'Con Lincencia', 'class' => 'outline-none'])->label(false) ?>
                 <?= $form->field($searchModel, 'tipo[2]')->checkbox(['template' => "{input} {label}", 'label' => Html::tag('span', 'Pago unico', ['class' => 'text-slate-500']), 'value' => 'Pago unico', 'class' => 'outline-none'])->label(false) ?>
 
                 <h1 class="font-bold text-sm uppercase text-slate-700 my-2">Formato</h1>
@@ -81,11 +81,11 @@ $this->title = 'Soft Library';
                         <div class="software_content rounded-md">
                             <div class="software_overview relative cursor-pointer">
                                 <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                                    <?= $item['nombre_licencia']; ?>
+                                    <?= $item['licencia']; ?>
                                 </span>
 
                                 <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
-                                    <img src="<?= $item["fotografia"] ?>" alt="office_365_lincencia">
+                                    <img src="<?= $item["fotografia"] ?>" alt="office_365_lincencia" class="min-h-[265px] object-cover">
                                 </div>
                             </div>
                             <div class="software_about my-2 cursor-pointer">
