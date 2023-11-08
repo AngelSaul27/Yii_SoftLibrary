@@ -8,13 +8,21 @@
     <div id="animation-carousel" class="relative w-full" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-            <!-- Item 1 -->
-            <div class="active duration-200 ease-linear" data-carousel-item>
-                <img src="<?= Yii::getAlias('@web/imgs/banner_autodesk.webp')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-            <div class="active duration-200 ease-linear" data-carousel-item>
-                <img src="<?= Yii::getAlias('@web/imgs/app_scaled.jpg')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -translate-3" alt="...">
-            </div>
+            <?php if(isset($anuncios)) : ?>
+                <?php foreach($anuncios as $anuncio) : ?>
+                    <div class="active duration-200 ease-linear" data-carousel-item>
+                        <img src="<?= Yii::getAlias('@web/'.$anuncio['imagen'])?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -translate-3" alt="...">
+                    </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <!-- Item 1 -->
+                <div class="active duration-200 ease-linear" data-carousel-item>
+                    <img src="<?= Yii::getAlias('@web/imgs/banner_autodesk.webp')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                </div>
+                <div class="active duration-200 ease-linear" data-carousel-item>
+                    <img src="<?= Yii::getAlias('@web/imgs/app_scaled.jpg')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -translate-3" alt="...">
+                </div>
+            <?php endif; ?>
         </div>
         <!-- Slider controls -->
         <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
@@ -42,22 +50,22 @@
     <div class="grid grid-cols-6 gap-4 mb-2">
         <?php if (isset($oficina)) : ?>
             <?php foreach ($oficina as $dato) : ?>
-                <div class="software_content rounded-md min-h-[265px]">
+                <a href="<?= Yii::getAlias('@web/software/'.$dato['id'])?>" class="software_content rounded-md min-h-[265px]">
                     <div class="software_overview relative cursor-pointer">
                         <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
-                            <?= isset($dato["licencia"]) ? $dato["licencia"] : 'Sin información' ?>
+                            <?= $dato["licencia"] ?? 'Sin información' ?>
                         </span>
 
                         <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
                             <img src="<?= $dato['fotografia'] ?>" alt="office_365_lincencia">
                         </div>
                     </div>
-                </div>
+                </a>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
     <div class="text-center my-4">
-        <a href="<?= Yii::getAlias("@web") ?>/listado" class="text-xl text-neutral-700 hover:text-neutral-500">Ver más</a>
+        <a href="<?= Yii::getAlias("@web") ?>/softwares" class="text-xl text-neutral-700 hover:text-neutral-500">Ver más</a>
     </div>
 
     <!-- ENDED -->
@@ -90,7 +98,7 @@
     <div class="grid grid-cols-6 gap-4 mb-2">
         <?php if (isset($edicion)) : ?>
             <?php foreach ($edicion as $dato) : ?>
-                <div class="software_content rounded-md min-h-[265px]">
+                <a href="<?= Yii::getAlias('@web/software/'.$dato['id'])?>" class="software_content rounded-md min-h-[265px]">
                     <div class="software_overview relative cursor-pointer">
                         <span class="text-sm text-white absolute rounded-r bg-neutral-800 shadow px-2 top-4 select-none">
                             <?= isset($dato["licencia"]) ? $dato["licencia"] : 'Sin información' ?>
@@ -99,13 +107,13 @@
                             <img src="<?= $dato['fotografia']?>" alt="office_365_lincencia" class="min-h-[265px] object-cover">
                         </div>
                     </div>
-                </div>
+                </a>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
 
     <div class="text-center mt-4">
-        <a href="<?= Yii::getAlias("@web") ?>/listado" class="text-xl text-neutral-700 hover:text-neutral-500">Ver más</a>
+        <a href="<?= Yii::getAlias("@web") ?>/softwares" class="text-xl text-neutral-700 hover:text-neutral-500">Ver más</a>
     </div>
 
     <!--- ENDED --->

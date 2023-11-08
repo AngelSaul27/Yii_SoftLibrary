@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Anuncios;
 use app\models\ViewDetalleSoftware;
 use webvimark\modules\UserManagement\models\forms\LoginForm;
 use app\models\RegisterForm;
@@ -39,8 +40,12 @@ class SiteController extends Controller
         $query = ViewDetalleSoftware::find();
         $Edicion =  $query->where(['categoria_nombre' => 'Software de Edición'])->limit(6)->all();
         $Oficina =  $query->where(['categoria_nombre' => 'Software de Oficina'])->limit(6)->all();
+        $anuncios = Anuncios::find()
+            ->where(['<=', 'fecha_inicio', date('Y-m-d')])
+            ->andWhere(['>=', 'fecha_final', date('Y-m-d')])
+            ->all();
 
-        return $this->render('index',['edicion' => $Edicion, 'oficina' => $Oficina]);
+        return $this->render('index',['edicion' => $Edicion, 'oficina' => $Oficina, 'anuncios' => $anuncios]);
     }
 
     /**

@@ -56,14 +56,28 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'usuario' => 'usuario/index',
-                'administrador' => 'admin/index',
-                'administrador/form/software' => 'admin/form-software',
+                'usuario/mis-favoritos' => 'usuario/mis-favoritos',
 
-                'listado' => 'software/index', //Global Acess
+                'administrador' => 'admin/software',
 
-                'login' => 'site/login', //Global Acess with isGuest
-                'register' => 'site/register', //Global Acess with isGuest
-                'logout' => 'site/logout' //Global Acess with not isGuest
+                'administrador/carousel' => 'admin/carousel',
+                'administrador/carousel/create' => 'admin/carousel-create',
+                'administrador/carousel/<id:\d+>/edit' => 'admin/carousel-edit',
+                'administrador/carousel/<id:\d+>/delete' => 'admin/carousel-delete',
+
+                'administrador/software/<id:\d+>/edit' => 'admin/software-edit',
+                'administrador/software/<id:\d+>/delete' => 'admin/software-delete',
+                'administrador/software/create' => 'admin/software-create',
+
+
+                'software/eliminar-favorito/<id:\d+>' => 'software/eliminar-favorito',
+                'software/agregar-favorito/<id:\d+>' => 'software/agregar-favorito',
+                'software/<id:\d+>' => 'software/view', //Global Access
+                'softwares' => 'software/index', //Global Access
+
+                'login' => 'site/login', //Global Access with isGuest
+                'register' => 'site/register', //Global Access with isGuest
+                'logout' => 'site/logout', //Global Acess with not isGuest
             ],
         ],
     ],

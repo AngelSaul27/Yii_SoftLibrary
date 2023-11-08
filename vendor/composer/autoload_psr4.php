@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'yii\\symfonymailer\\' => array($vendorDir . '/yiisoft/yii2-symfonymailer/src'),
+    'yii\\jui\\' => array($vendorDir . '/yiisoft/yii2-jui'),
     'yii\\gii\\' => array($vendorDir . '/yiisoft/yii2-gii/src'),
     'yii\\faker\\' => array($vendorDir . '/yiisoft/yii2-faker/src'),
     'yii\\debug\\' => array($vendorDir . '/yiisoft/yii2-debug/src'),
@@ -21,6 +22,10 @@ return array(
     'webvimark\\extensions\\DateRangePicker\\' => array($vendorDir . '/webvimark/date-range-picker'),
     'webvimark\\extensions\\BootstrapSwitch\\' => array($vendorDir . '/webvimark/bootstrap-switch'),
     'webvimark\\components\\' => array($vendorDir . '/webvimark/components'),
+    'kartik\\select2\\' => array($vendorDir . '/kartik-v/yii2-widget-select2/src'),
+    'kartik\\plugins\\fileinput\\' => array($vendorDir . '/kartik-v/bootstrap-fileinput'),
+    'kartik\\file\\' => array($vendorDir . '/kartik-v/yii2-widget-fileinput/src'),
+    'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base/src'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
