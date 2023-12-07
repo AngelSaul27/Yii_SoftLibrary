@@ -73,7 +73,9 @@ $config = [
                 'software/eliminar-favorito/<id:\d+>' => 'software/eliminar-favorito',
                 'software/agregar-favorito/<id:\d+>' => 'software/agregar-favorito',
                 'software/<id:\d+>' => 'software/view', //Global Access
+                'softwares/search' => 'software/search', //Global Access
                 'softwares' => 'software/index', //Global Access
+
 
                 'login' => 'site/login', //Global Access with isGuest
                 'register' => 'site/register', //Global Access with isGuest

@@ -14,14 +14,6 @@
                         <img src="<?= Yii::getAlias('@web/'.$anuncio['imagen'])?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -translate-3" alt="...">
                     </div>
                 <?php endforeach; ?>
-            <?php else : ?>
-                <!-- Item 1 -->
-                <div class="active duration-200 ease-linear" data-carousel-item>
-                    <img src="<?= Yii::getAlias('@web/imgs/banner_autodesk.webp')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                </div>
-                <div class="active duration-200 ease-linear" data-carousel-item>
-                    <img src="<?= Yii::getAlias('@web/imgs/app_scaled.jpg')?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -translate-3" alt="...">
-                </div>
             <?php endif; ?>
         </div>
         <!-- Slider controls -->

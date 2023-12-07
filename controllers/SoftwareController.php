@@ -32,6 +32,7 @@ class SoftwareController extends Controller
     public function actionIndex($page = 1): string
     {
         $searchModel = new SoftwareSearch();
+        $searchModel->scenario = 'index';
         $searchModel->load(Yii::$app->request->get());
 
         $query = ViewDetalleSoftware::find();
@@ -52,6 +53,28 @@ class SoftwareController extends Controller
             'pages' => $pagination,
             'model' => $model ,
             'searchModel' => $searchModel
+        ]);
+    }
+
+    public function actionSearch($page = 1)
+    {
+        $searchModel = new SoftwareSearch(['scenario' => 'header']);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        // Configuración de la paginación
+        $pagination = new Pagination([
+            'totalCount' => $dataProvider->getTotalCount(),
+            'defaultPageSize' => $dataProvider->pagination->defaultPageSize,
+            'page' => $page - 1,
+        ]);
+
+        // Obtener los modelos para la página actual
+        $model = $dataProvider->getModels();
+
+        return $this->render('/site/software/software_search', [
+            'pages' => $pagination,
+            'model' => $model,
+            'searchModel' => $searchModel,
         ]);
     }
 

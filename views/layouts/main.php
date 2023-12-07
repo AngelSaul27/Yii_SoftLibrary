@@ -56,7 +56,7 @@ use webvimark\modules\UserManagement\UserManagementModule;
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                 </button>
-                <input type="text" class="outline-none rounded-r border-r border-t border-b px-4 py-2 w-full" placeholder="No disponible temporalmente "/>
+                <?= \app\widgets\SoftwareSearch::widget() ?>
             </div>
             <div id="menu_search" class="z-[100] hidden bg-slate-900 rounded-lg shadow w-max divide-y divide-slate-800 top-20">
                 <ul class="py-2 text-sm text-gray-700">

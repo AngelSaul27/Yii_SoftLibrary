@@ -3,6 +3,7 @@
 namespace app\models;
 
 use yii\base\Model;
+use yii\data\ActiveDataProvider;
 
 class SoftwareSearch extends Model
 {
@@ -10,12 +11,14 @@ class SoftwareSearch extends Model
     public $tipo;
     public $formato;
     public $publicacion;
+    public $nombre;
 
     public function rules(): array
     {
         return [
-            [['categoria', 'tipo'], 'safe'], // Los campos son seguros y no se validan aquí.
-            [['publicacion'], 'date'],
+            [['categoria', 'tipo'], 'safe', 'on' => 'index'], // Los campos son seguros y no se validan aquí.
+            [['publicacion'], 'date', 'on' => 'index'],
+            [['nombre'], 'safe', 'on' => 'header'],
         ];
     }
 
@@ -44,5 +47,29 @@ class SoftwareSearch extends Model
             $query->andWhere(['>=', 'fecha_lanzamiento', $this->publicacion]);
         }
     }
+
+    public function search($params): ActiveDataProvider
+    {
+        $query = ViewDetalleSoftware::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 8, // Número de elementos por página
+            ],
+        ]);
+
+        $this->load($params);
+        $this->nombre = $params['nombre'];
+
+        if (!$this->validate()) {
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere(['like', 'LOWER(nombre)', strtolower($this->nombre)]);
+
+        return $dataProvider;
+    }
+
 
 }

@@ -15,6 +15,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -90,6 +91,8 @@ class SiteController extends Controller
         $model = new UserModel(['scenario'=>'newUser']);
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->fotografia = UploadedFile::getInstance($model, 'fotografia');
+            $model->uploaded =  UploadedFile::getInstance($model, 'fotografia');
             $result = $model->save();
 
             Yii::$app->session->setFlash(
@@ -98,6 +101,7 @@ class SiteController extends Controller
             );
 
             if($result){
+
                 $role = UserModel::assignRole($model->id, UserModel::USER_DEFAULT);
 
                 return $this->redirect('/');

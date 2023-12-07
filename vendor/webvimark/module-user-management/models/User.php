@@ -36,28 +36,11 @@ class User extends UserIdentity
 	const STATUS_BANNED = -1;
     const USER_DEFAULT = 'Usuario';
 
-	/**
-	 * @var string
-	 */
 	public $gridRoleSearch;
-
-	/**
-	 * @var string
-	 */
 	public $password;
-
-	/**
-	 * @var string
-	 */
 	public $repeat_password;
+    public $uploaded;
 
-	/**
-	 * Store result in singleton to prevent multiple db requests with multiple calls
-	 *
-	 * @param bool $fromSingleton
-	 *
-	 * @return static
-	 */
 	public static function getCurrentUser($fromSingleton = true)
 	{
 		if ( !$fromSingleton )
@@ -77,14 +60,6 @@ class User extends UserIdentity
 		return $user;
 	}
 
-	/**
-	 * Assign role to user
-	 *
-	 * @param int  $userId
-	 * @param string $roleName
-	 *
-	 * @return bool
-	 */
 	public static function assignRole($userId, $roleName)
 	{
 		try
@@ -106,14 +81,6 @@ class User extends UserIdentity
 		}
 	}
 
-	/**
-	 * Revoke role from user
-	 *
-	 * @param int    $userId
-	 * @param string $roleName
-	 *
-	 * @return bool
-	 */
 	public static function revokeRole($userId, $roleName)
 	{
 		$result = Yii::$app->db->createCommand()
@@ -128,12 +95,6 @@ class User extends UserIdentity
 		return $result;
 	}
 
-	/**
-	 * @param string|array $roles
-	 * @param bool         $superAdminAllowed
-	 *
-	 * @return bool
-	 */
 	public static function hasRole($roles, $superAdminAllowed = true)
 	{
 		if ( $superAdminAllowed AND Yii::$app->user->isSuperadmin )
@@ -155,12 +116,6 @@ class User extends UserIdentity
         return Yii::$app->user->identity->findEmail();
     }
 
-	/**
-	 * @param string $permission
-	 * @param bool   $superAdminAllowed
-	 *
-	 * @return bool
-	 */
 	public static function hasPermission($permission, $superAdminAllowed = true)
 	{
 		if ( $superAdminAllowed AND Yii::$app->user->isSuperadmin )
@@ -173,20 +128,6 @@ class User extends UserIdentity
 		return in_array($permission, Yii::$app->session->get(AuthHelper::SESSION_PREFIX_PERMISSIONS,[]));
 	}
 
-	/**
-	 * Useful for Menu widget
-	 *
-	 * <example>
-	 * 	...
-	 * 		[ 'label'=>'Some label', 'url'=>['/site/index'], 'visible'=>User::canRoute(['/site/index']) ]
-	 * 	...
-	 * </example>
-	 *
-	 * @param string|array $route
-	 * @param bool         $superAdminAllowed
-	 *
-	 * @return bool
-	 */
 	public static function canRoute($route, $superAdminAllowed = true)
 	{
 		if ( $superAdminAllowed AND Yii::$app->user->isSuperadmin )
@@ -260,6 +201,8 @@ class User extends UserIdentity
 			['username', 'required'],
 			['username', 'trim'],
 
+            [['fotografia'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, webp', 'on' => 'newUser'],
+            [['fotografia'], 'nameFile'],
 			[['status', 'email_confirmed'], 'integer'],
 
             ['email', 'required'],
@@ -277,6 +220,10 @@ class User extends UserIdentity
 			['password', 'match', 'pattern' => Yii::$app->getModule('user-management')->passwordRegexp],
 		];
 	}
+
+    public function nameFile(){
+        $this->fotografia =  'uploads/' . $this->fotografia->baseName .'_'.(date("d_m_Y_h_i_s")). '.' . $this->fotografia->extension;
+    }
 
 	/**
 	 * Check that there is no such confirmed E-mail in the system
@@ -395,6 +342,8 @@ class User extends UserIdentity
 		{
 			$this->setPassword($this->password);
 		}
+
+        $this->uploaded->saveAs($this->fotografia);
 
 		return parent::beforeSave($insert);
 	}

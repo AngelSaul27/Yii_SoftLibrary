@@ -13,6 +13,7 @@ $this->title = 'Registro';
     <?php
         echo $form->field($model, 'username')->textInput()->label('Name');
         echo $form->field($model, 'email')->textInput()->label('Email');
+        echo $form->field($model, 'fotografia')->fileInput()->label('Fotografia');
         echo $form->field($model, 'password')->passwordInput();
 
         echo Html::submitButton('Register', ['class' => 'btn btn-primary hover:bg-neutral-600 bg-neutral-800 border-none w-full']);

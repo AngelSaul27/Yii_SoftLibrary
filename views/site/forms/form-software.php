@@ -29,7 +29,7 @@ $this->title = 'Formulario Software'
 
             <div>
                 <?= $form->field($model, 'version')->input('number') ?>
-                <?= $form->field($model, 'precio') ?>
+                <?= $form->field($model, 'precio')->input('number') ?>
                 <?= $form->field($model, 'enlace') ?>
 
             </div>

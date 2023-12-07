@@ -85,7 +85,7 @@ $this->title = 'Soft Library';
                                 </span>
 
                                 <div class="software_overview-image rounded-md overflow-hidden shadow-sm">
-                                    <img src="<?= $item["fotografia"] ?>" alt="office_365_lincencia" class="min-h-[265px] object-cover">
+                                    <img src="<?= Yii::getAlias('@web/').$item["fotografia"] ?>" alt="office_365_lincencia" class="min-h-[323px] max-h-[323px] object-cover">
                                 </div>
                             </div>
                             <div class="software_about my-2 cursor-pointer">
